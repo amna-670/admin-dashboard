@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Package, Grid3X3, Users, DollarSign } from "lucide-react"
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 const stats = [
@@ -10,6 +12,15 @@ const stats = [
 ]
 
 const Dashboard = () => {
+   const navigate = useNavigate()
+
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    if (!currentUser) {
+      navigate('/login')
+    }
+  }, [navigate])
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-1">

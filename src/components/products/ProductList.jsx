@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { toast } from "sonner"
 
@@ -39,6 +39,15 @@ const ProductList = () => {
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState("")
   const [image, setImage] = useState("")
+
+   const navigate = useNavigate()
+
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    if (!currentUser) {
+      navigate('/login')
+    }
+  }, [navigate])
 
   const getProducts = useCallback(async () => {
     try {
@@ -163,11 +172,13 @@ const ProductList = () => {
                     <td className="p-4">{product.id}</td>
 
                     <td className="p-4">
+                      <Link to={`/products-detail/${product.id}`}>
                       <img
                         src={product.image || "https://via.placeholder.com/50"}
                         alt={product.name || product.title}
                         className="h-12 w-12 rounded object-cover"
                       />
+                      </Link>
                     </td>
 
                     <td className="p-4 font-medium">

@@ -17,6 +17,13 @@ const AddProductForm = () => {
   const [price, setPrice] = useState("")
   const [image, setImage] = useState("")
   const [isSaving, setIsSaving] = useState(false)
+  
+    useEffect(() => {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+      if (!currentUser) {
+        navigate('/login')
+      }
+    }, [navigate])
 
   const handleSubmit = async (e) => {
     e.preventDefault()

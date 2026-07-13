@@ -7,16 +7,19 @@ import {
   Truck,
   Shield,
   RotateCcw,
+  Check,
 } from "lucide-react";
 import SiteHeader from "../site-header";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Loader } from "./Loader";
+import { toast } from "sonner";
 
 const ProductsDetails = () => {
   const [products, setProducts] = useState(null);
   const [active, setActive] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const { id } = useParams();
 
@@ -43,6 +46,19 @@ const ProductsDetails = () => {
   function toggle() {
     setActive((prev) => !prev);
   }
+
+ function handleAddToCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || []
+  const alreadyInCart = cart.some(item => item.id === products.id)
+
+  if (!alreadyInCart) {
+    cart.push(products)
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }
+
+  setAddedToCart(true)
+  toast.success(`${products?.name || products?.title} added to cart!`)
+}
 
   return (
     <>
@@ -114,10 +130,21 @@ const ProductsDetails = () => {
                     <div className="flex gap-4">
                       <Button
                         size="lg"
+                        onClick={handleAddToCart}
+                        disabled={addedToCart}
                         className="flex-1 gap-2 bg-blue-600 text-white hover:bg-blue-700"
                       >
-                        <ShoppingCart className="h-5 w-5" />
-                        Add to Cart
+                        {addedToCart ? (
+                          <>
+                            <Check className="h-5 w-5" />
+                            Added to Cart
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingCart className="h-5 w-5" />
+                            Add to Cart
+                          </>
+                        )}
                       </Button>
 
                       <Button

@@ -40,7 +40,7 @@ const Signup = () => {
    
       const newUser = {
         fullName: userInfo.fullName,
-        email: userInfo.email,
+        email: userInfo.email.trim().toLowerCase(),
         password: userInfo.password
       }
       

@@ -31,14 +31,15 @@ const Login = () => {
       const response = await axios.get(apiUrl)
       const allUsers = response.data
       const matchedUser = allUsers.find(
-        user => user.email === userInfo.email && user.password === userInfo.password
+        user => user.email === userInfo.email.trim().toLowerCase() && user.password === userInfo.password
       )
       
       if (matchedUser) {
         toast.success("Login successful! Welcome back.")
         console.log("Login successful!", matchedUser)
    
-        localStorage.setItem('currentUser', JSON.stringify(matchedUser))
+        const { password, ...safeUser } = matchedUser
+        localStorage.setItem('currentUser', JSON.stringify(safeUser))
         
         navigate('/')
       } else {

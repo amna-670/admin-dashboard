@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { NavUser } from "@/components/nav-user"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem,} from "@/components/ui/sidebar"
-import { LayoutDashboard, List, PlusCircle, Command, CircleUser, LogIn, UserKey, LogOut } from "lucide-react"
+import { LayoutDashboard, List, PlusCircle, Command, CircleUser, LogIn, UserKey, LogOut, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 import {AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger,} from "@/components/ui/alert-dialog"
@@ -21,6 +20,11 @@ const navItems = [
     title: "Add Product",
     path: "/add-product",
     icon: <PlusCircle className="size-4" />,
+  },
+   {
+    title: "Your Cart",
+    path: "/cart",
+    icon: <ShoppingCart className="size-4" />
   },
   {
     title: "Contact",
@@ -58,7 +62,7 @@ const AppSidebar = ({ ...props }) => {
                   <Command className="size-6 text-primary drop-shadow-[0_0_10px_oklch(0.65_0.25_265/0.5)]" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-lg font-bold tracking-tight">Cortex Admin</span>
+                  <span className="text-lg font-bold tracking-tight">Admin</span>
                   <span className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-medium">Dashboard v1.0</span>
                 </div>
               </Link>
@@ -95,14 +99,7 @@ const AppSidebar = ({ ...props }) => {
       </SidebarContent>
       
       <SidebarFooter className="border-t border-sidebar-border/50 p-4">
-        {/* User Info */}
-        <div className="mb-4">
-          <NavUser user={{ 
-            name: currentUser?.fullName || "Guest User", 
-            email: currentUser?.email || "guest@example.com" 
-          }} />
-        </div>
-        
+         
         {currentUser && (
           <AlertDialog>
             <AlertDialogTrigger asChild>
