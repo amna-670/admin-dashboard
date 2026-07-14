@@ -21,11 +21,6 @@ const navItems = [
     path: "/add-product",
     icon: <PlusCircle className="size-4" />,
   },
-   {
-    title: "Your Cart",
-    path: "/cart",
-    icon: <ShoppingCart className="size-4" />
-  },
   {
     title: "Contact",
     path: "/contact",

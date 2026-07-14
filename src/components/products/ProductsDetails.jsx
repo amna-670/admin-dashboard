@@ -1,27 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
-import {
-  Heart,
-  ShoppingCart,
-  Truck,
-  Shield,
-  RotateCcw,
-  Check,
-} from "lucide-react";
+import { Heart, ArrowLeft, Truck, Shield, RotateCcw} from "lucide-react";
 import SiteHeader from "../site-header";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Loader } from "./Loader";
-import { toast } from "sonner";
 
 const ProductsDetails = () => {
   const [products, setProducts] = useState(null);
   const [active, setActive] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [addedToCart, setAddedToCart] = useState(false);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const getProduct = useCallback(async () => {
     try {
@@ -47,19 +39,6 @@ const ProductsDetails = () => {
     setActive((prev) => !prev);
   }
 
- function handleAddToCart() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || []
-  const alreadyInCart = cart.some(item => item.id === products.id)
-
-  if (!alreadyInCart) {
-    cart.push(products)
-    localStorage.setItem('cart', JSON.stringify(cart))
-  }
-
-  setAddedToCart(true)
-  toast.success(`${products?.name || products?.title} added to cart!`)
-}
-
   return (
     <>
       <SiteHeader title="Products Details" />
@@ -83,9 +62,7 @@ const ProductsDetails = () => {
                     />
                   </div>
 
-                  {/* Right Column - Details */}
                   <div className="p-8 lg:p-10">
-                    {/* Title */}
                     <h2 className="mb-3 text-3xl font-bold text-foreground lg:text-4xl">
                       {products?.name || products?.title}
                     </h2>
@@ -130,21 +107,11 @@ const ProductsDetails = () => {
                     <div className="flex gap-4">
                       <Button
                         size="lg"
-                        onClick={handleAddToCart}
-                        disabled={addedToCart}
+                        onClick={() => navigate('/ProductsList')}
                         className="flex-1 gap-2 bg-blue-600 text-white hover:bg-blue-700"
                       >
-                        {addedToCart ? (
-                          <>
-                            <Check className="h-5 w-5" />
-                            Added to Cart
-                          </>
-                        ) : (
-                          <>
-                            <ShoppingCart className="h-5 w-5" />
-                            Add to Cart
-                          </>
-                        )}
+                        <ArrowLeft className="h-5 w-5" />
+                        Back to Products
                       </Button>
 
                       <Button

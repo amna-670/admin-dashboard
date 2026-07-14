@@ -7,7 +7,6 @@ const Dashboard = lazy(() => import("./pages/Dashboard"))
 const Products = lazy(() => import("./components/products/Products"))
 const ProductList = lazy(() => import("./components/products/ProductList"))
 const AddProductForm = lazy(() => import("./components/products/AddProductForm"))
-const Cart = lazy(() => import("./components/products/Cart"))
 const Contact = lazy(() => import("./pages/Contact"))
 const Forms = lazy(() => import("./pages/Login"))
 const ProductsDetails = lazy(() => import("./components/products/ProductsDetails"))
@@ -34,7 +33,6 @@ function App() {
             <Route path="/ProductsList" element={<ProductList />} />
             <Route path="/add-product" element={<AddProductForm />} />
             <Route path="/edit-product/:id" element={<AddProductForm />} />
-            <Route path="/cart" element={<Cart />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Forms />} />
             <Route
