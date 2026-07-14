@@ -1,16 +1,64 @@
-# React + Vite
+# Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive e-commerce admin dashboard built with React and Vite, featuring user authentication, product management, and dark/light theme support.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Authentication** — Signup, login, and logout flow with session persistence and protected routes
+- **Product Management** — Add, list, and view product details, with an editable product form
+- **Theme Toggle** — Dark/light mode switch
+- **Responsive Sidebar Navigation** — Collapsible, offcanvas sidebar with a mobile trigger, built with shadcn/ui
+- **Toast Notifications** — User feedback for actions like login, signup via Sonner
+- **Custom 404 Page** — Graceful handling of unmatched routes
+- **Loading & Error States** — Loading indicators for async data fetching
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework:** React (Vite)
+- **Routing:** React Router
+- **Styling:** Tailwind CSS, shadcn/ui
+- **HTTP Client:** Axios
+- **Notifications:** Sonner
+- **Icons:** Lucide React
+- **API:** RESTful API (mockapi.io)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v18 or later recommended)
+- npm
+
+### Installation
+
+1. Clone the repository
+```bash
+   git clone <your-repo-url>
+   cd admin-dashboard
+```
+
+2. Install dependencies
+```bash
+   npm install
+```
+
+3. Start the development server
+```bash
+   npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+
+
+## Notes
+
+- Authentication and user/product data are handled through [mockapi.io](https://mockapi.io), a mock REST API service. This project uses it for demo purposes only — there is no real backend, password hashing, or session/token-based security. It is not intended for production use as-is.
+
+## Author
+
+**Amna Idrees**
