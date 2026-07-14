@@ -28,17 +28,17 @@ const Contact = () => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    toast.success("Message sent successfully!")
+    toast.success("Issue reported successfully!")
     setFormData(emptyForm)
   }
 
   return (
     <>
-      <SiteHeader title="Contact" />
+      <SiteHeader title="Support" />
       <div className="max-w-2xl mx-auto space-y-6">
         <div className="text-center space-y-2">
-          <h1 className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-3xl font-bold tracking-tight text-transparent">Get in Touch</h1>
-          <p className="text-muted-foreground text-sm">Fill out the form below and we'll get back to you.</p>
+          <h1 className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-3xl font-bold tracking-tight text-transparent">Report an Issue</h1>
+          <p className="text-muted-foreground text-sm">Facing a bug or need help? Let us know below.</p>
         </div>
         <Card>
           <CardContent className="pt-6 space-y-4">
@@ -65,17 +65,17 @@ const Contact = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message">Describe the Issue</Label>
                 <Textarea 
                   id="message" 
-                  placeholder="Your message here..." 
+                  placeholder="What went wrong? Steps to reproduce, if any..." 
                   rows={4} 
                   value={formData.message}
                   onChange={handleInputChange}
                   required
                 />
               </div>
-              <Button type="submit" className="w-full">Send Message</Button>
+              <Button type="submit" className="w-full">Submit Report</Button>
             </form>
           </CardContent>
         </Card>

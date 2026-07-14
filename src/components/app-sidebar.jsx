@@ -22,7 +22,7 @@ const navItems = [
     icon: <PlusCircle className="size-4" />,
   },
   {
-    title: "Contact",
+    title: "Support",
     path: "/contact",
     icon: <CircleUser className="size-4" />,
   },
