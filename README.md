@@ -24,12 +24,19 @@ A responsive e-commerce admin dashboard built with React and Vite, featuring use
 
 ## Project Structure
 admin-dashboard/
+
 ├── public/
+
 ├── src/
+
 │   ├── app/
+
 │   │   └── dashboard/
+
 │   │       └── Page.jsx
-│   ├── assets/
+
+│   ├── assets/ 
+
 │   ├── components/
 │   │   ├── context/
 │   │   │   ├── theme.js
