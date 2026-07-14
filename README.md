@@ -32,21 +32,27 @@ A responsive e-commerce admin dashboard built with React and Vite, featuring use
 ### Installation
 
 1. Clone the repository
+```bash
    git clone <your-repo-url>
    cd admin-dashboard
-
+```
 
 2. Install dependencies
+```bash
    npm install
-
+```
 
 3. Start the development server
-    npm run dev
-
+```bash
+   npm run dev
+```
 
 ### Build for Production
 
+```bash
 npm run build
+```
+
 
 
 ## Notes
